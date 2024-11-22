@@ -7,6 +7,10 @@ module.exports = defineConfig({
   e2e: {
 
     baseUrl: "https://opensource-demo.orangehrmlive.com",
+
+   // specPattern : "cypress/e2e/**/*.dbsqa.{js,jsx,ts,tsx}",
+
+    //baseUrl: "https://www.saucedemo.com/v1",
     video: true,
    // defaultCommandTimeout: 20000, // 4000
     pageLoadTimeout: 30000,      //60000

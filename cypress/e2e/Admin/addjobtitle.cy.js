@@ -1,4 +1,8 @@
 
+import logindata from "../../fixtures/login.json"
+
+import jobtitledata from "../../fixtures/admindata/jobtitle.json"
+
 describe("Verify add job title functionality", () => {
 
 
@@ -6,9 +10,9 @@ describe("Verify add job title functionality", () => {
 
         cy.visit('/web/index.php/auth/login')
 
-        cy.get('input[name="username"]').type("Admin")
+        cy.get('input[name="username"]').type(logindata.username)
 
-        cy.get('input[name="password"]').type("admin123")
+        cy.get('input[name="password"]').type(logindata.password)
 
         cy.get('button[type="submit"]').click()
 
@@ -23,9 +27,9 @@ describe("Verify add job title functionality", () => {
 
         let r = (Math.random() + 1).toString(36).substring(7);
 
-        cy.get('input[class="oxd-input oxd-input--active"]').last().type("Automation Engineer I"+ r)
+        cy.get('input[class="oxd-input oxd-input--active"]').last().type(jobtitledata.jobtilte+ r)
 
-        cy.get('textarea[placeholder="Type description here"]').type("Automation testing")
+        cy.get('textarea[placeholder="Type description here"]').type(jobtitledata.jobdescription)
 
         cy.get('button[type="submit"]').click()
 
