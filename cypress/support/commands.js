@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+
 //
 //
 // -- This is a child command --
@@ -23,3 +23,40 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('login', (username, password) => { 
+    
+
+    cy.visit('/web/index.php/auth/login')
+
+    cy.get('input[name="username"]').type(username)
+
+    cy.get('input[name="password"]').type(password)
+
+    cy.get('button[type="submit"]').click()
+
+    cy.contains('Time at Work').should("be.visible")
+
+  })
+
+
+  Cypress.Commands.add('addjobtitle', (title, jobdescription) => { 
+
+    cy.contains('Job').click()
+    cy.contains('Job Titles').click()
+
+    cy.get('button[class="oxd-button oxd-button--medium oxd-button--secondary"]').click()
+
+    let randomChars = (Math.random() + 1).toString(36).substring(7);
+   
+    cy.get('input[class="oxd-input oxd-input--active"]').last().type(title+ randomChars)
+
+    cy.get('textarea[placeholder="Type description here"]').type(jobdescription)
+
+    cy.get('button[type="submit"]').click()
+
+    cy.contains("Successfully Saved").should("be.visible")
+
+
+  })

@@ -5,15 +5,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "runPIMInchrome": "npx cypress run --spec cypress/e2e/PIM/**.cy.js --browser=chrome",
-     "runPIMInFirefox": "npx cypress run --spec cypress/e2e/PIM/**.cy.js --browser=firefox",
-     "guru" : "npx cypress run --spec cypress/e2e/PIM/**.cy.js --browser=edge"
+    "runPIMInFirefox": "npx cypress run --spec cypress/e2e/PIM/**.cy.js --browser=firefox",
+    "guru": "npx cypress run --spec cypress/e2e/PIM/**.cy.js --browser=edge"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cypress",
+    "mocha"
+  ],
+  "author": "Raju",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cypress": "^13.15.2"
+    "cypress": "^13.0.0"
   },
   "devDependencies": {
     "cypress-mochawesome-reporter": "^3.8.2"
