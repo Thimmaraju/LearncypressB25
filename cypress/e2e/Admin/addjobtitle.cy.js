@@ -1,17 +1,54 @@
 
 import logindata from "../../fixtures/login.json"
 
-import jobtitledata from "../../fixtures/admindata/jobtitle.json"
-
-describe("Verify add job title functionality", () => {
 
 
-    it("Verify adding job title with mandatory fileds", () => {
+describe("Verify add job title functionality", function () {
 
-        cy.login(logindata.username, logindata.password)
-        cy.get('a[href="/web/index.php/admin/viewAdminModule"]').click()
+  const creds = ["Admin", "admin123"]
+  const jobtiledata = {
 
-        cy.addjobtitle(jobtitledata.jobtilte, jobtitledata.jobdescription)
+       jobtitle : "SDET I", 
+       jobdescription : "Automation testing"
+  }
 
-    })
+ const menuitems = {
+
+    menu1 : "Admin",
+    menu2 : "PIM", 
+    menu3 : "Leave",
+    menu4 : "Time",
+    menu5 : "Recruitment",
+    menu6 : "My Info",
+    menu7 : "Performance",
+    menu8 : "Dashboard"
+ }
+ 
+  const   jobtitles = ["SDET IV", "FronEnD Developer", "ScrumMaster", "BA", "PO"]
+
+  jobtitles.forEach( jobtitle =>{
+
+    if(Cypress.browser.name === 'chrome'){
+
+      it(`Verify adding job title with mandatory fileds - ${jobtitle} `, function () {
+  
+          cy.login(creds[0], creds[1])
+  
+          // cy.conatins("Admin").should("be.visible")
+          // cy.conatins("PIM").should("be.visible")
+          for(let modulename in menuitems){
+            cy.contains(menuitems[modulename]).should("be.visible")
+  
+          }
+          cy.get('a[href="/web/index.php/admin/viewAdminModule"]').click()
+  
+          cy.addjobtitle(jobtitle, jobtiledata.jobdescription)
+  
+      })
+    }
+  
+
+  })
+
+
 })

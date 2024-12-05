@@ -25,7 +25,7 @@ module.exports = defineConfig({
        "username" : "Raju",
        "password" : "Raju@1234"
     },
-
+   watchForFileChanges: false,
 
     setupNodeEvents(on, config) {
       // implement node event listeners here

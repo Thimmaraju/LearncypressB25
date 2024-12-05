@@ -50,7 +50,7 @@ Cypress.Commands.add('login', (username, password) => {
 
     let randomChars = (Math.random() + 1).toString(36).substring(7);
    
-    cy.get('input[class="oxd-input oxd-input--active"]').last().type(title+ randomChars)
+    cy.get('input[class="oxd-input oxd-input--active"]').last().type(title)
 
     cy.get('textarea[placeholder="Type description here"]').type(jobdescription)
 
@@ -60,3 +60,8 @@ Cypress.Commands.add('login', (username, password) => {
 
 
   })
+
+  Cypress.Commands.add("getRandomId", () => {
+    let rand = Math.floor(Math.random() * 9000) + 1000;
+    return rand;
+  });

@@ -2,10 +2,37 @@ import data from "../../fixtures/login.json"
 
 describe('Verify Login functionality', () => {
 
-    var username = "Admin"
-     var password = "admin123"
+  var username = "Admin"
+  var password = "admin123"
 
-  it('Verify the logo', () => {
+
+
+  it.only('Verify the logo', () => {
+
+    switch (Cypress.browser.name) {
+
+
+      case "chrome": {
+
+        cy.log("The browser is Chrome Browser ")
+        cy.viewport("iphone-6")
+      }
+        break;
+
+      case "firefox": {
+
+        cy.log("The browser is Firefox Browser ")
+        cy.viewport("macbook-15")
+      }
+        break;
+
+      case "edge": {
+
+        cy.log("The browser is Edge Browser ")
+        cy.viewport("samsung-s10")
+      }
+        break;
+    }
 
     cy.visit('/web/index.php/auth/login')
 
@@ -14,8 +41,8 @@ describe('Verify Login functionality', () => {
   })
 
   it('Verify login with valid credentials ', () => {
-  
-  
+
+
     cy.login(username, password)
 
     cy.url().should("eq", "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
@@ -24,7 +51,7 @@ describe('Verify Login functionality', () => {
   it('Verify Login with Valid Username and Invalid password', () => {
 
 
-     let wrongpassord = "ergjn"
+    let wrongpassord = "ergjn"
 
     cy.visit("/web/index.php/auth/login")
 
