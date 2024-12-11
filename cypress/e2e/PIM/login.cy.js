@@ -2,6 +2,12 @@ import data from "../../fixtures/login.json"
 
 describe('Verify Login functionality', () => {
 
+  // before("login", ()=>{
+    
+  //   cy.login(username, password)
+
+  // })
+
   var username = "Admin"
   var password = "admin123"
 
@@ -36,7 +42,7 @@ describe('Verify Login functionality', () => {
 
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('img[alt="company-branding"]').should("be.visible")
+    cy.get('.orangehrm-login-branding').should("be.visible")
 
   })
 

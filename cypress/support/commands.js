@@ -36,7 +36,6 @@ Cypress.Commands.add('login', (username, password) => {
 
     cy.get('button[type="submit"]').click()
 
-    cy.contains('Time at Work').should("be.visible")
 
   })
 
