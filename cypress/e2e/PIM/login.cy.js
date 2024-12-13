@@ -1,4 +1,5 @@
 import data from "../../fixtures/login.json"
+import login from "../../pages/login.po"
 
 describe('Verify Login functionality', () => {
 
@@ -13,7 +14,7 @@ describe('Verify Login functionality', () => {
 
 
 
-  it.only('Verify the logo', () => {
+  it('Verify the logo', () => {
 
     switch (Cypress.browser.name) {
 
@@ -42,7 +43,7 @@ describe('Verify Login functionality', () => {
 
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('.orangehrm-login-branding').should("be.visible")
+    cy.get(login.logo).should("be.visible")
 
   })
 
@@ -61,36 +62,24 @@ describe('Verify Login functionality', () => {
 
     cy.visit("/web/index.php/auth/login")
 
-    cy.get('input[name="username"]').type(username)
+    login.loginwithcreds(data.username, wrongpassord)
 
-    cy.get('input[name="password"]').type(wrongpassord)
-
-    cy.get('button[type="submit"]').click()
-
-    cy.contains('Invalid credentials').should("be.visible")
+    cy.contains(login.loginErrorMessage()).should("be.visible")
   })
   it('Verify Login with InValid Username and valid password', () => {
     cy.visit(`https://opensource-demo.orangehrmlive.com/web/index.php/auth/login`)
 
-    cy.get("input[name='username']").type(data.wrongusername)
+    login.loginwithcreds(data.wrongusername, data.password)
 
-    cy.get('input[name="password"]').type(password)
-
-    cy.get('button[type="submit"]').click()
-
-    cy.contains('Invalid credentials').should("be.visible")
+    cy.contains(login.loginErrorMessage()).should("be.visible")
   })
 
   it('Verify Login with InValid Username and Invalid password', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 
-    cy.get('input[name="username"]').type(data.wrongusername)
+    login.loginwithcreds(data.wrongusername, data.wrongpassord)
 
-    cy.get('input[name="password"]').type(data.wrongpassord)
-
-    cy.get('button[type="submit"]').click()
-
-    cy.contains('Invalid credentials').should("be.visible")
+    cy.contains(login.loginErrorMessage()).should("be.visible")
   })
 
 })

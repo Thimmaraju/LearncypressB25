@@ -1,6 +1,6 @@
 
 import logindata from "../../fixtures/login.json"
-
+import dashboard from "../../pages/dashboardPage.po"
 
 
 describe("Verify add job title functionality", function () {
@@ -40,7 +40,7 @@ describe("Verify add job title functionality", function () {
             cy.contains(menuitems[modulename]).should("be.visible")
   
           }
-          cy.get('a[href="/web/index.php/admin/viewAdminModule"]').click()
+          cy.get(dashboard.pimMenu()).click()
   
           cy.addjobtitle(jobtitle, jobtiledata.jobdescription)
   
