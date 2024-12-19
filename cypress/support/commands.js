@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
 require('cypress-downloadfile/lib/downloadFileCommand')
+require('@4tw/cypress-drag-drop')
 
 Cypress.Commands.add('login', (username, password) => { 
     
