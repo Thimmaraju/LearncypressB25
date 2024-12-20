@@ -2,7 +2,7 @@
 
 describe('Automation - Working with Shadowroot elements 2', function () {
 
-  it('Cypress Test Case - Shadow', function () {
+  it.only('Cypress Test Case - Shadow', function () {
 
     Cypress.on("uncaught:exception", function () {
   
@@ -13,10 +13,11 @@ describe('Automation - Working with Shadowroot elements 2', function () {
 
     //cy.get("input[type='text']").type("cypress");
 
+     cy.get('#shadow_host').shadow().find('input[type="text"]').type("Raju")
 
-     cy.get('#shadow_host').shadow().find('[type="checkbox"]').check()
+      cy.get('#shadow_host').shadow().find('[type="checkbox"]').check()
 
-    cy.get('#shadow_host').shadow().find("input[type='text']").type("Raju")
+    
 
 
   })

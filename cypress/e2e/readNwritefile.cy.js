@@ -5,29 +5,17 @@ describe('Automation - Write file and Read file ', function () {
 
     it.only('Cypress Test Case - Write file example', function () {
        
-        cy.writeFile('cypress/fixtures/module1/test.txt', "Ranganath\n" )
+
+        var stuname = "Sai"
+        cy.writeFile('cypress/fixtures/module1/test.txt', stuname+"\n" )
 
         cy.writeFile('cypress/fixtures/module1/test.txt', "Raju",{flag: 'a+'} ) // Append 
 
-         cy.writeFile('cypress/fixtures/module1/sample.json', {"firstname": "Raju", "lastname": "G"})
+        cy.writeFile('cypress/fixtures/module1/sample.json', {"firstname": "Raju", "lastname": "G"})
      
     })
 
-
-    it('Cypress Test Case - Append Data in end to the file ', function () {
-        
-        cy.wait(5000)
-        cy.writeFile('cypress/fixtures/module1/test.txt', "Ganesh",{flag: 'a+'});
-     
-    })
-
-    it.only('Cypress Test Case - Create Json file ', function () {
-        
-        cy.writeFile('cypress/fixtures/module1/test6.json', { firstname: 'G', lastname: 'Thimmaraju'});
-     
-    })
-
-    it.only('Cypress Test Case - extracting text and saving ina file ', function () {
+    it('Cypress Test Case - extracting text and saving ina file ', function () {
 
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 
@@ -48,18 +36,18 @@ describe('Automation - Write file and Read file ', function () {
     })
 
     it.only('Cypress Test Case - Validation of Data both Text file and Json ', function () {
+
+        cy.readFile("cypress/fixtures/10. CMMI Levels.jpeg").should('exist')
         
-        cy.readFile("cypress/fixtures/PIM/addemployee.json").its("firstname").should("eq", "Sai")
+        cy.readFile("cypress/fixtures/admindata/jobtitle.json").its("jobtilte").should("eq", "Automation Engineer I")
 
 
-        cy.readFile('cypress/fixtures/Admin/addjobtitle.json').should('exist')
-        cy.readFile('cypress/fixtures/Admin/addjobtitle.json').its("jobtitle").should('eq', "SDET I")
+        cy.readFile('cypress/fixtures/login.json').should('exist')
+       
 
-        //cy.readFile("cypress/fixtures/module2/version.json").its("versionnumber").should("eq", "OrangeHRM OS 5.7")
-     
-          cy.readFile('cypress/fixtures/module1/test.txt').should('contain','Ranganath');
+          cy.readFile('cypress/fixtures/module1/test.txt').should('contain','Sai');
 
-          cy.readFile('cypress/fixtures/module1/test.txt').should('contain','Ranganath\nRaju')       
+          cy.readFile('cypress/fixtures/module1/test.txt').should('contain','Sai\nRaju')       
     })
 
 
@@ -91,7 +79,7 @@ describe('Automation - Write file and Read file ', function () {
        })
     })
 
-    it("sample test", ()=>{
+    it.only("sample test", ()=>{
 
         cy.visit("/")
 
@@ -99,10 +87,10 @@ describe('Automation - Write file and Read file ', function () {
 
              var version = txt.text()
 
-            Cypress.env('version', version);
+            Cypress.env('version', version); // Assigning dynamic to envt variable 
 
              cy.log(Cypress.env("version"))
-             cy.writeFile('cypress/fixtures/module2/version.json', { "versionnumber": version});
+            // cy.writeFile('cypress/fixtures/module2/version.json', { "versionnumber": version});
      
 
         })

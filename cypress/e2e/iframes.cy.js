@@ -4,7 +4,7 @@ describe('Automation - Working With Iframe', function () {
   
       cy.visit('https://jqueryui.com/checkboxradio/');
 
-      cy.get('#radio-2').check()
+      cy.get('label[for="radio-1"]').click()
 
      
     })
@@ -15,9 +15,9 @@ describe('Automation - Working With Iframe', function () {
 
         cy.get('iframe[class="demo-frame"]').then(($iframe) =>{
 
-           let radio2 = $iframe.contents().find('#radio-2')
+           let radio = $iframe.contents().find('#radio-1')
 
-           cy.wrap(radio2).check({force:true})
+           cy.wrap(radio).check({force:true})
         })
 
 

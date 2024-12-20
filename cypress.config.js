@@ -24,7 +24,8 @@ module.exports = defineConfig({
     env: {
 
        "username" : "Raju",
-       "password" : "Raju@1234"
+       "password" : "Raju@1234",
+       "version": ""
     },
    watchForFileChanges: false,
 

@@ -17,7 +17,8 @@
   "description": "",
   "dependencies": {
     "cypress": "^13.0.0",
-    "cypress-downloadfile": "^1.2.4"
+    "cypress-downloadfile": "^1.2.4",
+    "cypress-real-events": "^1.13.0"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",
