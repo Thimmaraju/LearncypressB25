@@ -4,7 +4,8 @@
 describe('Verify Add employee functionality', function () {
 
   before(function () {
-    cy.fixture('PIM/addemployee.json').then(function (data) {
+    //cypress\fixtures\addemployee.json
+    cy.fixture('addemployee.json').then(function (data) {
       this.data = data;
     })
   })
@@ -12,6 +13,7 @@ describe('Verify Add employee functionality', function () {
   it('Verify add employee with Mandotory details', function () {
 
     cy.log("Test execution started")
+    
     cy.login("Admin", "admin123")
 
     cy.url().should("eq", 'https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')

@@ -24,12 +24,24 @@ describe('Validate Orange HRM Login functionality', function () {
 
   })
 
+  it.only('Validate submit clainm ', function () {
+
+    cy.visit("/web/index.php/claim/submitClaim")
+    //block of code 
+
+
+  })
+
+
+  
+
   it.only('Validate Add employee ', function () {
 
 
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee')
 
-    cy.addemployee("Raju","G")
+    cy.get('input[name="firstName"]').type("Anitha")
+    cy.get('input[name="lastName"]').type("dfkjnrekjhbn")
     
 
 
