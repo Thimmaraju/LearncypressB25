@@ -28,7 +28,8 @@ module.exports = defineConfig({
 
        "username" : "Raju",
        "password" : "Raju@1234",
-       "version": ""
+       "version": "",
+       "cookivalue" : "orangehrm=129pu1fo4g5oab7rt28dph61c7"
     },
    watchForFileChanges: false,
 
