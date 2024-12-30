@@ -1,7 +1,7 @@
 class dashBoardPage{
   pimMenu(){
    
-    return 'a[href="/web/index.php/admin/viewAdminModule"]'
+    return 'a[href="/web/index.php/pim/viewPimModule"]'
 
   }
 

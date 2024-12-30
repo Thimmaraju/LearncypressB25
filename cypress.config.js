@@ -1,5 +1,8 @@
 const { defineConfig } = require("cypress");
 const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 //const allureCypress = require("allure-cypress/reporter");
 
@@ -14,6 +17,8 @@ module.exports = defineConfig({
     baseUrl: "https://opensource-demo.orangehrmlive.com",
 
    // specPattern : "cypress/e2e/**/*.dbsqa.{js,jsx,ts,tsx}",
+
+   specPattern: "**/*.feature",
 
     //baseUrl: "https://www.saucedemo.com/v1",
     video: true,
@@ -40,6 +45,13 @@ module.exports = defineConfig({
       // allureCypress(on, config);  // Call allureCypress as a function, passing `on` and `config`
 
       // return config;
-    },
+
+      on("file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin.default(config)],
+        }));
+        preprocessor.addCucumberPreprocessorPlugin(on, config);
+        return config;
+      },
   },
 });

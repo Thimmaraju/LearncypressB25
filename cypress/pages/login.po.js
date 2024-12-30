@@ -1,12 +1,12 @@
 class loginPage{
 
       logo = 'img[alt="company-branding"]'
-    //   usernameInput = 'input[name="username"]'
+      usernameInput = 'input[name="username"]'
 
-    //   passwordInput(){
+      passwordInput(){
 
-    //     return 'input[name="password"]'
-    //   }
+        return 'input[name="password"]'
+      }
 
       entercred(value){
 
